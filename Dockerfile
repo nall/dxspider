@@ -9,7 +9,8 @@ ENV GID=$GROUPID
 RUN groupadd -g ${GID} spider && useradd -ms /bin/bash -u ${UID} -g ${GID} sysop
 
 RUN curl -L https://cpanmin.us | perl - App::cpanminus
-RUN cpanm EV Mojolicious JSON Curses Net::CIDR::Lite Date::Parse JSON::XS Data::Structure::Util Math::Round --force
+RUN cpanm EV Mojolicious JSON Curses Net::CIDR::Lite Date::Parse JSON::XS Data::Structure::Util Math::Round Authen::SASL --force
+RUN apt-get update && apt-get install -y rsync
 
 RUN mkdir /spider
 
